@@ -1,26 +1,31 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-
-
-int main()
-{
-    int arr[5] = {2, 1, 3, 5, 4}, i = 0, j = 0, hole = 0;
-    for (i = 1; i < 5; i++)
-    {
-        hole = arr[i];
-        j = i - 1;
-        while (j >= 0 && arr[j] > hole)
-        {
-            arr[j + 1] = arr[j];
+#include<bits/stdc++.h>
+using namespace std;
+void insertion_sort(int arr[],int n){
+    int i,j,flag;
+    for(i=1;i<n;i++){
+        flag = arr[i];
+        j=i-1;
+        while(j>=0 && arr[j]<flag){
+            arr[j+1]=arr[j];
             j--;
         }
-        arr[j + 1] = hole;
+        arr[j+1]=flag;
     }
-
-    printf("\nAfter sorting : ");
-    for (i = 0; i < 5; i++)
-    {
-        printf("%d ", arr[i]);
+}
+void display(int arr[],int size){
+    int i=0;
+    while(i<size){
+        cout<<arr[i]<<" ";
+        i++;
     }
-    printf("\n");
+    cout<<"\n";
+}
+int main(int argc, char const *argv[])
+{
+    int A[]={25,14,62,20,18};
+    int size = sizeof(A)/sizeof(A[0]);
+    insertion_sort(A,size);
+    cout<<"After sortng : ";
+    display( A, size);
+   
 }
